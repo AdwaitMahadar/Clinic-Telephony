@@ -1,0 +1,62 @@
+# --- OS Generated Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.Spotlight-V100
+.Trashes
+
+# --- Editors and IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# --- Languages & Package Managers ---
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+.venv/
+
+# Java / Maven / Gradle
+target/
+.gradle/
+build/
+*.class
+
+# Compiled C/C++
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# --- Environment & Secrets ---
+# NEVER commit your secrets!
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# --- Logs and Databases ---
+*.log
+*.sqlite
+*.db
+
+# --- Temporary Files ---
+tmp/
+temp/
