@@ -14,7 +14,7 @@ This is **not** a full appointment management system. The receptionist continues
 Patient calls the clinic’s number. If either:
 - the call is **not answered for 25 seconds**, OR
 - the receptionist **cuts/rejects** the call  
-…then the call is routed to the agent (provider-agnostic). The handoff must feel **smooth** (minimal extra ring/wait).
+- the call is then forwarded to the agent (call forwading happens in telecom layer)
 
 ### 1.2 Opening script (must include AI disclosure + language choice)
 Spoken **in Hindi**, first line includes disclosure:
@@ -222,8 +222,8 @@ Agent may paraphrase but must stay within doc content.
 ## 10) Functional Requirements (MVP)
 
 ### FR-1 Call Answering & Routing
-- Agent must answer when no-answer >= 25s OR call rejected.
-- Handoff must not add noticeable delay beyond routing.
+- Call routing will happen at telecom layer (not the responsibility of the agent)
+- Once call reaches the Agent, it must answer immediately
 
 ### FR-2 Language Selection
 - Opening line spoken in Hindi, offers Hindi/Marathi/English.
