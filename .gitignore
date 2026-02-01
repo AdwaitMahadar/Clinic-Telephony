@@ -1,62 +1,37 @@
-# --- OS Generated Files ---
-.DS_Store
-Thumbs.db
-desktop.ini
-.Spotlight-V100
-.Trashes
-
-# --- Editors and IDEs ---
-.vscode/
-.idea/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# --- Languages & Package Managers ---
-# Node.js
+# Dependencies
 node_modules/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Build Output
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
 npm-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-venv/
-env/
-.env
-.venv/
+# Testing
+coverage/
+.nyc_output/
 
-# Java / Maven / Gradle
-target/
-.gradle/
-build/
-*.class
-
-# Compiled C/C++
-*.o
-*.obj
-*.exe
-*.out
-*.app
-
-# --- Environment & Secrets ---
-# NEVER commit your secrets!
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*.pem
-*.key
-
-# --- Logs and Databases ---
-*.log
-*.sqlite
-*.db
-
-# --- Temporary Files ---
+# Temporary Files
 tmp/
 temp/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
