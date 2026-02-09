@@ -153,7 +153,7 @@ src/models/session.ts
 ---
 
 ### Step 6: Google Docs Service
-**Objective:** Fetch and cache clinic information from Google Doc
+**Objective:** Fetch clinic information from Google Doc (fresh on each call)
 
 **Tasks:**
 - [ ] Install `googleapis` package
@@ -164,16 +164,14 @@ src/models/session.ts
   - Parse `body.content` for headings (## Hours, ## Location, etc.)
   - Extract text under each section
 - [ ] Implement `getClinicInfo(category?)`:
-  - Check Redis cache (`doc-cache`, TTL 900s)
-  - If miss, fetch and cache
+  - Fetch from Google Docs API (fresh on each call)
   - Return full doc or specific section
 - [ ] Handle API errors gracefully
 
 **Success Criteria:**
 - [ ] Can fetch real Google Doc (create test doc with template structure)
 - [ ] Parsed sections match expected structure
-- [ ] Cache works (second call hits cache, logged)
-- [ ] Cache expires after 15 minutes
+- [ ] Fresh fetch works correctly on each call
 
 **Files to Create:**
 ```
@@ -496,7 +494,7 @@ src/tools/definitions.ts
 
 **Success Criteria:**
 - [ ] Tool returns clinic info from Google Doc
-- [ ] Cache is used on subsequent calls
+- [ ] Fresh fetch occurs on each tool call
 - [ ] Agent can answer "What are your hours?" type questions
 
 **Files to Create:**

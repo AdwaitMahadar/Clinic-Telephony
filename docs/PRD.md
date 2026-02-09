@@ -186,10 +186,9 @@ Doc must follow a predictable structure:
 
 Agent may paraphrase but must stay within doc content.
 
-### 8.2 Refresh and caching
+### 8.2 Refresh Document
 - Convert Google Doc → Markdown in backend
-- Cache duration: **15 minutes**
-- Fetch latest when cache expires
+- Fetch latest data when the call connects
 
 ---
 
@@ -230,7 +229,7 @@ Agent may paraphrase but must stay within doc content.
 - After selection, agent primarily uses that language but tolerates mixing.
 
 ### FR-3 Info Retrieval
-- Load info doc (Google Doc → Markdown) with 15-min cache.
+- Fetch info doc (Google Doc → Markdown) fresh when the call connects.
 - Answer only within doc content.
 
 ### FR-4 Slot Discovery
@@ -274,7 +273,7 @@ Agent may paraphrase but must stay within doc content.
    - Maintains conversation state per call
    - Calls: info retrieval + scheduling + calendar create + WhatsApp send
 3) **Google Doc Fetcher**
-   - Fetches doc, converts to markdown, caches 15 min
+   - Fetches doc, converts to markdown
 4) **Calendar Adapter**
    - Reads events, identifies Clinic-Open, counts overlaps, creates appointment
 5) **WhatsApp Adapter**

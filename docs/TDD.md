@@ -71,7 +71,7 @@
 │               ▼                                        │
 │  ┌──────────────────────────────────────────────────┐  │
 │  │  Tool Services (function handlers)               │  │
-│  │  - DocsService: Google Doc → Markdown + cache    │  │
+│  │  - DocsService: Google Doc → Markdown (per-call) │  │
 │  │  - CalendarService: Slot search + booking        │  │
 │  │  - WhatsAppService: Send summaries               │  │
 │  └──────────────────────────────────────────────────┘  │
@@ -440,17 +440,15 @@ After `session.update`, send:
 
 ### 6.1 DocsService
 
-**Purpose:** Fetch and cache clinic information from Google Doc
+**Purpose:** Fetch clinic information from Google Doc (fresh on each call)
 
 **Methods:**
 ```typescript
 class DocsService {
   async getClinicInfo(category?: string): Promise<string> {
-    // 1. Check Redis cache: key "doc-cache", TTL 900s
-    // 2. If miss: fetch from Google Docs API
-    // 3. Parse doc structure (markdown-like sections)
-    // 4. Cache entire doc
-    // 5. Return relevant section or full doc
+    // 1. Fetch from Google Docs API (fresh on each call)
+    // 2. Parse doc structure (markdown-like sections)
+    // 3. Return relevant section or full doc
   }
   
   private async fetchFromGoogleDocs(): Promise<ClinicInfo> {
@@ -461,9 +459,7 @@ class DocsService {
 }
 ```
 
-**Redis Key:** `doc-cache`  
-**TTL:** 900 seconds (15 minutes)  
-**Cache Value:** JSON stringified clinic info
+**Note:** Clinic info is fetched fresh when each call connects (no caching).
 
 ---
 
@@ -623,7 +619,7 @@ A: {agent text}
 | Key Pattern | Purpose | TTL | Value Type |
 |-------------|---------|-----|------------|
 | `session:{callSessionId}` | Call session state | 3600s | JSON (CallSession) |
-| `doc-cache` | Clinic info document | 900s | JSON (ClinicInfo) |
+
 | `slot-lock:{YYYY-MM-DD}:{HH:MM}` | Booking concurrency lock | 60s | Integer (0-2) |
 | `transcript:{callSessionId}` | Full transcript backup | 3600s | JSON Array |
 
