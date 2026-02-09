@@ -11,8 +11,8 @@
 
 This document provides a step-by-step implementation plan for building the clinic voice agent. Each step should be completed sequentially, with clear success criteria before moving to the next step.
 
-**Total Estimated Time:** 4 weeks  
-**Steps:** 20 tasks organized in 6 phases
+**Total Estimated Time:** 3 weeks  
+**Steps:** 32 steps organized in 7 phases
 
 ---
 
